@@ -1,0 +1,5 @@
+demo-test-dataaccess.log.message.key.1 = Received request for getTransferFrequencies
+demo-test-dataaccess.log.message.key.2 = Received request for getTransferProfiles
+demo-test-dataaccess.log.message.key.3 = Received request for createTransferProfile
+demo-test-dataaccess.log.message.key.4 = Received request for getTransferTypes
+

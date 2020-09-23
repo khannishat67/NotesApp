@@ -1,0 +1,6 @@
+demo-test-api.log.message.key.1 = Received request for getTransferFrequencies
+demo-test-api.log.message.key.4 = Received request for getTransferProfiles
+demo-test-api.log.message.key.5 = Received request for createTransferProfile
+demo-test-api.log.message.key.6 = Received request for getTransferTypes
+demo-test-api.log.message.key.2 = Data retrieved
+demo-test-api.log.message.key.3 = Failed to fetch record

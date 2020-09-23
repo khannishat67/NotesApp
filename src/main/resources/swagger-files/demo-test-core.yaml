@@ -1,0 +1,174 @@
+swagger: '2.0'
+info:
+  description: api.description
+  version: '1.0'
+  title: instruction-service
+  termsOfService: api.termsOfService
+  contact:
+    name: api.contact.name
+    url: 'http://api.contact.url'
+    email: api@demo.com
+  license:
+    name: api.license.name
+    url: 'http://api.license.url'
+host: '0.0.0.0:9999'
+basePath: /instruction-service/1.0
+schemes:
+  - http
+paths:
+  /frequencies:
+    get:
+      summary: Find transfer frequencies
+      operationId: getTransferFrequencies
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: transfer frequencies successfully returned
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Frequency'
+  /profiles:
+    get:
+      summary: Find transfer profiles
+      operationId: getTransferProfiles
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: transfer profiles successfully returned
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Profile'
+    post:
+      summary: Create a transfer profile
+      operationId: createTransferProfile
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: The transfer profile to create
+          required: true
+          schema:
+            $ref: '#/definitions/Profile'
+      responses:
+        '201':
+          description: Transfer profiles successfully created
+  /types:
+    get:
+      summary: Find transfer types
+      operationId: getTransferTypes
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: transfer types successfully returned
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/TransferType'
+definitions:
+  Frequency:
+    type: object
+    required:
+      - description
+      - id
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: The ID of the frequency
+      description:
+        type: string
+        description: The description of the frequency
+    description: Represents an frequency of the system
+    x-className:
+      type: string
+      format: demo.bank.core.instruction.model.Frequency
+  Account:
+    type: object
+    required:
+      - id
+      - number
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: The ID of the account
+      number:
+        type: string
+        description: The account number
+    description: Represents an account of the system
+  TransferType:
+    type: object
+    required:
+      - description
+      - id
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: The ID of the transfer type
+      description:
+        type: string
+        description: The description of the transfer type
+    description: Represents an transfer type of the system
+    x-className:
+      type: string
+      format: demo.bank.core.instruction.model.TransferType
+  Profile:
+    type: object
+    required:
+      - source_account
+      - target_account
+      - transfer_amount
+      - transfer_date
+      - transfer_frequency
+      - transfer_type
+    properties:
+      id:
+        type: integer
+        format: int32
+      transfer_amount:
+        type: number
+        format: double
+        description: The transfer amount
+        minimum: 0.01
+        exclusiveMinimum: false
+      transfer_date:
+        type: string
+        format: date-time
+        description: The transfer date
+      transfer_memo:
+        type: string
+        description: The transfer memo
+      transfer_type:
+        description: The transfer type details
+        $ref: '#/definitions/TransferType'
+      transfer_frequency:
+        description: The transfer frequency details
+        $ref: '#/definitions/Frequency'
+      target_account:
+        description: The transfer target account details
+        $ref: '#/definitions/Account'
+      source_account:
+        description: The transfer source account details
+        $ref: '#/definitions/Account'
+    description: Represents a Transfer Profile of the system
+    x-className:
+      type: string
+      format: demo.bank.core.instruction.model.Profile
