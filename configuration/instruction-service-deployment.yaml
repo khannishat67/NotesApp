@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: instruction-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: instruction-service
+      version: 1.0
+  template:
+    metadata:
+      labels:
+        app: instruction-service
+        version: 1.0
+    spec:
+      containers:
+      - name: instruction-service
+        image: cde-sea-innov1000229845
+        ports:
+        - containerPort: 9999
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /instruction-service/1.0/actuator/health/liveness
+            port: 9999
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          successThreshold: 1
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /instruction-service/1.0/actuator/health/readiness
+            port: 9999
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          successThreshold: 1
