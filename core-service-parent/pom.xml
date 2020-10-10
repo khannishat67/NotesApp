@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.cognizant.cosmos.datajpa</groupId>
+		<artifactId>datajpa</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>core-service-parent</artifactId>
+	<packaging>pom</packaging>
+
+	<dependencies>
+
+		<!-- Spring Boot Related -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		
+		<!-- Spring Cloud Related -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-kubernetes-all</artifactId>
+		</dependency>
+
+		<!-- COSMOS Utility Libraries -->
+		<dependency>
+			<groupId>com.cognizant</groupId>
+			<artifactId>util-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cognizant</groupId>
+			<artifactId>util-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cognizant</groupId>
+			<artifactId>util-mapper</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cognizant</groupId>
+			<artifactId>util-swagger2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cognizant</groupId>
+			<artifactId>util-validation</artifactId>
+		</dependency>
+
+        <dependency>
+            <groupId>com.cognizant</groupId>
+            <artifactId>util-future</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cognizant</groupId>
+            <artifactId>util-json</artifactId>
+        </dependency>
+       
+        <dependency>
+            <groupId>com.cognizant</groupId>
+            <artifactId>util-exception</artifactId>
+        </dependency>
+
+		<!-- GCP Libraries -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-gcp-starter-trace</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-gcp-starter-logging</artifactId>
+		</dependency>
+
+		<!-- Common Utility Libraries -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.zalando</groupId>
+			<artifactId>problem-spring-web-starter</artifactId>
+		</dependency>
+
+	</dependencies>
+
+</project>
