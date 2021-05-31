@@ -1,66 +1,60 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.cognizant.cosmos</groupId>
-	<artifactId>Demo-1</artifactId>
-	<version>1.0.0</version>
+	<parent>
+		<groupId>com.cognizant</groupId>
+		<artifactId>composite-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<groupId>com.cognizant</groupId>
+	<artifactId>alfwh</artifactId>
+	<version>${project.version}</version>
 	<packaging>pom</packaging>
+	<name>alfwh</name>
 	
-	<modules>
-		<module>core-api-parent</module>
-		<module>core-service-parent</module>
-		<module>core-dao-sql-parent</module>
-		<module>core-model-parent</module>
-		<module>composite-api-parent</module>
-		<module>composite-model-parent</module>
-		<module>core-dao-nosql-parent</module>
-		<module>core-client-soap-parent</module>
-		<module>core-client-rest-parent</module>
-		<module>core-client-http-parent</module>
-		<module>core-parent</module>
-		<module>composite-parent</module>
-	</modules>
-
 	<properties>
-		<maven-jaxb2-plugin.version>0.11.0</maven-jaxb2-plugin.version>
-		<cosmos.version>1.0.0</cosmos.version>
-		<guava.version>27.1-jre</guava.version>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<springboot.version>2.1.6.RELEASE</springboot.version>
-		<springcloud.version>Greenwich.SR2</springcloud.version>
-		<commons-logging.version>1.2</commons-logging.version>
+        <project.version>1.0.0</project.version>
+        <java.version>1.8</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<application.version>1.0.0</application.version>
-		<swagger.annotations.version>1.5.22</swagger.annotations.version>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-	</properties>
+		<sonar.exclusions>
+            	  **/dao/*.java,
+ 	          	  **/utils/*.java,
+                  **/entity/*.java,
+            	  **/model/*.java,
+            	  **/mapper/*.java,
+            	  **/controller/*.java
+       	</sonar.exclusions>
+    </properties>    
+    
+    <distributionManagement>
+        <repository>
+            <id>MacysNexus</id>
+            <layout>default</layout>
+            <name>Macys Nexus Deploy Repo</name>
+            <url>${releaseDistributionLocaltion}</url>
+        </repository>
+        <snapshotRepository>
+            <id>MacysNexus</id>
+            <layout>default</layout>
+            <uniqueVersion>false</uniqueVersion>
+            <name>Macys Nexus Deploy Repo</name>
+            <url>${snapshotDistributionLocaltion}</url>
+        </snapshotRepository>
+        <site>
+            <id>ReportsLocation</id>
+            <name>Report Locations</name>
+            <url>${siteDistributionLocaltion}</url>
+        </site>
+    </distributionManagement>
+    
+	<modules>
+		<module>service</module>
+		<module>functional-test</module>
+		<module>config</module>
+	</modules>
 	
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>${springboot.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${springcloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.cognizant.cosmos.spring</groupId>
-				<artifactId>cosmos-dependencies</artifactId>
-				<version>${cosmos.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 </project>
